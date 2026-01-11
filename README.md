@@ -64,6 +64,7 @@ LeafLine/
 
 ----
 
+```
 ## ⚙️ Setup Instructions
 
 ### Backend Setup
@@ -76,14 +77,12 @@ npm start
 
 ### frontend Setup
 
-```bash
 cd frontend
 npm install
 npm run dev
 
 ### Environment veriables(.env)
 
-```bash
 PORT=5000
 MONGO_URI=your_mongodb_url
 JWT_SECRET=your_secret
