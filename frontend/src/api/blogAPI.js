@@ -1,0 +1,58 @@
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
+
+export async function getBlogs(page = 1, limit = 10, category = "all", search = "") {
+  try {
+    const params = new URLSearchParams({
+      page,
+      limit,
+      ...(category !== "all" && { category }),
+      ...(search && { search })
+    });
+
+    const res = await fetch(`${API_BASE}/blogs?${params}`);
+    const json = await res.json();
+    return json.data || [];
+  } catch {
+    return [];
+  }
+}
+
+export async function getBlogById(id) {
+  const res = await fetch(`${API_BASE}/blogs/${id}`);
+  const json = await res.json();
+  return json.data;
+}
+
+export async function createBlog(data, token) {
+  console.log("📝 Sending blog data:", { title: data.title, summary: data.summary, contentLen: data.content?.length, image: data.image ? "present" : "null" });
+  const res = await fetch(`${API_BASE}/blogs`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify(data)
+  });
+  const json = await res.json();
+  console.log("📨 Blog response status:", res.status, "message:", json.message);
+  if (!res.ok) throw new Error(json.message);
+  return json.data;
+}
+
+export async function likeBlog(id, token) {
+  const res = await fetch(`${API_BASE}/blogs/like/${id}`, {
+    method: "PUT",
+    headers: { Authorization: `Bearer ${token}` }
+  });
+  const json = await res.json();
+  return json.data;
+}
+
+export async function deleteBlog(id, token) {
+  const res = await fetch(`${API_BASE}/blogs/${id}`, {
+    method: "DELETE",
+    headers: { Authorization: `Bearer ${token}` }
+  });
+  const json = await res.json();
+  return json.data;
+}

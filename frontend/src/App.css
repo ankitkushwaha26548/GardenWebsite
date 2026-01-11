@@ -1,0 +1,461 @@
+:root {
+  color: #162525;
+  background-color: #f4f7f3;
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #f4f7f3;
+  color: #162525;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.plant-db {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.plant-db__hero {
+  background: linear-gradient(135deg, #f2fff5, #e3f2e6);
+  border-radius: 24px;
+  padding: 2.5rem;
+  text-align: left;
+  box-shadow: 0 20px 60px rgba(22, 37, 37, 0.08);
+}
+
+.plant-db__hero h1 {
+  margin: 0.5rem 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.plant-db__hero p {
+  max-width: 640px;
+  line-height: 1.6;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  color: #4aa363;
+  margin: 0;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-stats span {
+  display: block;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.search-form {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  background: #fff;
+  border-radius: 16px;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  box-shadow: 0 18px 50px rgba(34, 60, 47, 0.09);
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  font-size: 1rem;
+  padding: 0.85rem 0.5rem;
+  background: transparent;
+  color: inherit;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.search-button {
+  border: none;
+  background: #2f855a;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.9rem 1.5rem;
+  cursor: pointer;
+  transition: background 150ms ease-in-out;
+}
+
+.search-button:hover {
+  background: #276749;
+}
+
+.suggestions-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 0.5rem;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(16, 24, 40, 0.1);
+  padding: 1.25rem;
+  z-index: 5;
+}
+
+.panel-status {
+  font-size: 0.9rem;
+  color: #1f2933;
+  margin-bottom: 0.5rem;
+}
+
+.panel-status--error {
+  color: #ba1a1a;
+}
+
+.suggestions-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.suggestions-list li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.4rem 0;
+  cursor: pointer;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.suggestions-list li img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.suggestion-name {
+  margin: 0;
+  font-weight: 600;
+}
+
+.suggestion-botanical {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #667085;
+}
+
+.search-hints {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.hint-title {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  color: #475467;
+}
+
+.hint-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.hint-chips button {
+  border: 1px solid #d1e8d8;
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  background: #f7fffa;
+  color: #2f855a;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.hint-empty {
+  margin: 0;
+  color: #98a2b3;
+}
+
+.highlight-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.highlight-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 1.25rem;
+  box-shadow: 0 10px 30px rgba(18, 38, 32, 0.08);
+}
+
+.highlight-card header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.highlight-chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.highlight-chip-grid button {
+  border: none;
+  border-radius: 12px;
+  padding: 0.5rem 0.9rem;
+  background: #f1f8f3;
+  color: #2f855a;
+  cursor: pointer;
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.results-error {
+  color: #b42318;
+  font-weight: 600;
+}
+
+.plant-db__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 1.5rem;
+}
+
+.plant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.grid-placeholder {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  color: #667085;
+  box-shadow: inset 0 0 0 1px #e4e7ec;
+}
+
+.plant-card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 28px rgba(15, 26, 22, 0.08);
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.plant-card:hover {
+  transform: translateY(-4px);
+}
+
+.plant-card--active {
+  border-color: #2f855a;
+}
+
+.plant-details-panel .plant-card {
+  cursor: default;
+  box-shadow: none;
+  border: none;
+}
+
+.plant-details-panel .plant-card:hover {
+  transform: none;
+}
+
+.plant-card__media img,
+.plant-card__placeholder {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.plant-card__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f2f4f7;
+  color: #98a2b3;
+}
+
+.plant-card__content {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.plant-card__category {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: #38a169;
+  margin: 0;
+}
+
+.plant-card__botanical {
+  margin: 0;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.plant-card__excerpt {
+  color: #4b5563;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.plant-card__care {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: #475467;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+}
+
+.plant-details-wrapper {
+  position: sticky;
+  top: 1.5rem;
+  align-self: start;
+}
+
+.plant-details-panel {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 18px 45px rgba(16, 24, 40, 0.12);
+}
+
+.plant-details__section {
+  margin-top: 1.5rem;
+}
+
+.plant-details__section h3 {
+  margin-bottom: 0.6rem;
+}
+
+.plant-details__section p {
+  margin-top: 0.5rem;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.care-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.care-card {
+  background: #f8fbf8;
+  border-radius: 12px;
+  padding: 0.85rem;
+  border: 1px solid #e2f0e5;
+}
+
+.care-label {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  color: #3f7f59;
+  margin: 0 0 0.4rem;
+}
+
+.plant-details__placeholder {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  color: #475467;
+  box-shadow: inset 0 0 0 1px #e4e7ec;
+}
+
+.design-tip {
+  background: linear-gradient(120deg, #fef6e7, #fffdf7);
+  border-radius: 16px;
+  padding: 1rem 1.2rem;
+  border: 1px solid #ffe3a3;
+}
+
+@media (max-width: 960px) {
+  .plant-db__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .plant-details-wrapper {
+    position: relative;
+  }
+}
+
+@media (max-width: 640px) {
+  .plant-db {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .search-form {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+
+  .search-button {
+    width: 100%;
+  }
+}
+
