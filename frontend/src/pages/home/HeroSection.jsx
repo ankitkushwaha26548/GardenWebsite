@@ -1,12 +1,10 @@
 import React from "react";
+import lushgarden from "../../assets/garden1.png";
+import flowerbed from "../../assets/garden2.png";
+import indorgarden from "../../assets/garden3.png";
+import snakegarden from "../../assets/garden4.png";
+import greenplants from "../../assets/garden5.png";
 
-const images = [
-  "./src/assets/garden1.png",
-  "./src/assets/garden2.png",
-  "./src/assets/garden3.png",
-  "./src/assets/garden4.png",
-  "./src/assets/garden5.png",
-];
 
 export default function Hero() {
   return (
@@ -30,11 +28,11 @@ export default function Hero() {
       </div>
 
       <div className="relative w-110 h-[520px] flex flex-col justify-between ">
-        <img src={images[0]} alt="Lush garden" className="rounded-xl object-cover w-[170px] h-[200px] absolute top-13 left-0 shadow-lg hover:scale-110 transition-transform duration-300" style={{ zIndex: 10 }} />
-        <img src={images[1]} alt="Flower bed" className="rounded-xl object-cover w-[170px] h-[235px] absolute top-3 right-20 shadow-lg hover:scale-110 transition-transform duration-300" style={{ zIndex: 20 }} />
-        <img src={images[2]} alt="Gardening tools" className="rounded-xl object-cover w-[170px] h-[235px] absolute bottom-3 right-20 shadow-lg hover:scale-110 transition-transform duration-300" style={{ zIndex: 10 }} />
-        <img src={images[3]} alt="People gardening" className="rounded-xl object-cover w-[170px] h-[200px] absolute bottom-13 left-0 shadow-lg hover:scale-110 transition-transform duration-300" style={{ zIndex: 20 }} />
-        <img src={images[4]} alt="Green plants" className="rounded-xl object-cover w-[180px] h-[410px] absolute top-15 left-94 shadow-lg hover:scale-110 transition-transform duration-300" style={{ zIndex: 20 }} />
+        <img src={lushgarden} alt="garden" className="rounded-xl object-cover w-[170px] h-[200px] absolute top-13 left-0 shadow-lg hover:scale-110 transition-transform duration-300" style={{ zIndex: 10 }} />
+        <img src={flowerbed} alt="garden" className="rounded-xl object-cover w-[170px] h-[235px] absolute top-3 right-20 shadow-lg hover:scale-110 transition-transform duration-300" style={{ zIndex: 20 }} />
+        <img src={indorgarden} alt="garden" className="rounded-xl object-cover w-[170px] h-[235px] absolute bottom-3 right-20 shadow-lg hover:scale-110 transition-transform duration-300" style={{ zIndex: 10 }} />
+        <img src={snakegarden} alt="garden" className="rounded-xl object-cover w-[170px] h-[200px] absolute bottom-13 left-0 shadow-lg hover:scale-110 transition-transform duration-300" style={{ zIndex: 20 }} />
+        <img src={greenplants} alt="garden" className="rounded-xl object-cover w-[180px] h-[410px] absolute top-15 left-94 shadow-lg hover:scale-110 transition-transform duration-300" style={{ zIndex: 20 }} />
       </div>
     </section>
   );
