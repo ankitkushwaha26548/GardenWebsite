@@ -64,7 +64,7 @@ LeafLine/
 
 ----
 
-##⚙️ Setup Instructions
+## ⚙️ Setup Instructions
 
 ### Backend Setup
 
@@ -88,7 +88,3 @@ PORT=5000
 MONGO_URI=your_mongodb_url
 JWT_SECRET=your_secret
 
----
-
-🧑‍💻 Usage
-Users can browse plant guides, explore plant data, read blogs, view garden gallery, and manage gardening knowledge easily using LeafLine.
