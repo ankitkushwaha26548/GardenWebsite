@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-# GardenWeb
-Gardening website
-=======
-# LeafLineWeb
+# LeafLine
 Garden Website
->>>>>>> 3905364 (Initial commit)
 
-# GardenWeb 🌱
-
-Fullstack MERN application for plant, seed & agriculture management.
+Fullstack MERN application for plant care & guides, plant info & schedule management.
 
 ## Tech Stack
 - Frontend: React + Vite + Tailwind
