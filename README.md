@@ -1,39 +1,88 @@
-<<<<<<< HEAD
-# GardenWeb
-Gardening website
-=======
-# LeafLineWeb
-Garden Website
->>>>>>> 3905364 (Initial commit)
+# 🌿 LeafLine
 
-# GardenWeb 🌱
+LeafLine is a full-stack MERN gardening website designed for plan management.  
+It helps users explore plant care guides, maintain plant records, and stay connected with nature digitally.
 
-Fullstack MERN application for plant, seed & agriculture management.
+---
 
-## Tech Stack
-- Frontend: React + Vite + Tailwind
-- Backend: Node.js + Express
-- Database: MongoDB
+## Project Type
 
-## Setup
+Full-Stack Web Application (MERN Stack)
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+- React.js
+- Vite
+- Tailwind CSS
 
 ### Backend
+- Node.js
+- Express.js
+
+### Database
+- MongoDB
+
+---
+
+## Main Features
+
+- 🌱 Plant Care & Guides  
+- 📚 Plant Database  
+- 📅 Dynamic Plant Calendar  
+- 📝 Blogs Section  
+- 🖼 Garden Gallery  
+
+---
+
+## 📂 Project Structure
+
+LeafLine/
+│
+├── backend/
+│ ├── controller/
+│ ├── middleware/
+│ ├── models/
+│ ├── routes/
+│ ├── seed/
+│ ├── .env
+│ └── server.js
+│
+├── frontend/
+│ ├── public/
+│ ├── src/
+│ └── vite.config.js
+│
+└── README.md
+
+----
+
+##⚙️ Setup Instructions
+
+### Backend Setup
+
 ```bash
 cd backend
 npm install
+npm start
+
+
+### frontend Setup
+
+```bash
+cd frontend
+npm install
 npm run dev
 
+### Environment veriables(.env)
 
-#.env
+```bash
 PORT=5000
 MONGO_URI=your_mongodb_url
 JWT_SECRET=your_secret
 
 
-#frontend 
-cd frontend
-npm install
-npm run dev
-
-
-
+🧑‍💻 Usage
+Users can browse plant guides, explore plant data, read blogs, view garden gallery, and manage gardening knowledge easily using LeafLine.
