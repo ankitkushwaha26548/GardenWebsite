@@ -10,9 +10,9 @@ const getAuthHeaders = () => {
 
 export const galleryAPI = {
   // Get all gallery posts
-  getAllPosts: async () => {
+   getAllPosts: async (page = 1, limit = 9) => {
     try {
-      const response = await fetch(`${API_BASE}/`, {
+      const response = await fetch(`${API_BASE}/?page=${page}&limit=${limit}`, {
         headers: getAuthHeaders(),
       });
       if (!response.ok) {
@@ -20,7 +20,6 @@ export const galleryAPI = {
         throw new Error(errorData.error || `Failed to fetch posts (${response.status})`);
       }
       const data = await response.json();
-      console.log(`✓ Fetched ${data.length} gallery posts`);
       return data;
     } catch (error) {
       console.error("Error fetching gallery posts:", error);
