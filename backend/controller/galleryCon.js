@@ -1,13 +1,27 @@
 import Gallery from "../models/Gallery.js";
 
 // Get all gallery posts
+
 export const getAllGallery = async (req, res) => {
   try {
-    const gallery = await Gallery.find()
-      .sort({ createdAt: -1 });
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 9; // Default to 9 posts per page
+    const skip = (page - 1) * limit;
 
-    console.log(`✓ Fetched ${gallery.length} gallery posts`);
-    res.json(gallery);
+    const gallery = await Gallery.find()
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    const total = await Gallery.countDocuments();
+
+    console.log(`✓ Fetched ${gallery.length} gallery posts (Page ${page})`);
+    res.json({
+      posts: gallery,
+      currentPage: page,
+      totalPages: Math.ceil(total / limit),
+      totalPosts: total
+    });
   } catch (err) {
     console.error("❌ Error fetching gallery:", err);
     res.status(500).json({ error: err.message });
