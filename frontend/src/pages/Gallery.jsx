@@ -20,13 +20,17 @@ export default function GalleryPage() {
   const [selectedPost, setSelectedPost] = useState(null);
   const [liking, setLiking] = useState(null);
 
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
+
   const userId = authUserId || localStorage.getItem("userId");
   const userName = authUserName || localStorage.getItem("userName") || "Anonymous";
   const userEmail = localStorage.getItem("userEmail") || "user@example.com";
   const isLoggedIn = !!token || !!userId;
 
   useEffect(() => {
-    fetchPosts();
+    fetchPosts(1);
   }, []);
 
   useEffect(() => {
@@ -36,17 +40,28 @@ export default function GalleryPage() {
     }
   }, [error]);
 
-  const fetchPosts = async () => {
+  const fetchPosts = async (pageNum = 1, append = false) => {
     try {
       setLoading(true);
-      setError("");
-      const data = await galleryAPI.getAllPosts();
-      setPosts(data || []);
+      const data = await galleryAPI.getAllPosts(pageNum);
+      if (append) {
+        setPosts(prev => [...prev, ...(data.posts || [])]);
+      } else {
+        setPosts(data.posts || []);
+      }
+      setTotalPages(data.totalPages || 1);
+      setPage(data.currentPage || pageNum);
     } catch (err) {
       setError("Failed to load gallery posts. Please try again.");
-      setPosts([]);
+      if (!append) setPosts([]);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const loadMore = async () => {
+    if (page < totalPages) {
+      fetchPosts(page + 1, true);
     }
   };
 
@@ -270,6 +285,7 @@ export default function GalleryPage() {
                     <motion.img
                       src={post.imageUrl}
                       alt={post.title}
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       whileHover={{ scale: 1.1 }}
                     />
@@ -356,6 +372,20 @@ export default function GalleryPage() {
               ))}
             </AnimatePresence>
           </div>
+          {/* Load More Button */}
+          {page < totalPages && (
+            <div className="flex justify-center mt-12 mb-8">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={loadMore}
+                disabled={loading}
+                className="bg-white border-2 border-green-600 text-green-600 px-10 py-3 rounded-xl hover:bg-green-600 hover:text-white transition-all duration-300 font-bold shadow-md hover:shadow-lg disabled:opacity-50"
+              >
+                {loading ? "Loading..." : "Load More Photos"}
+              </motion.button>
+            </div>
+          )}
         </div>
       )}
 
