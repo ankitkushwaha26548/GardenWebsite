@@ -93,17 +93,19 @@ export const likePost = async (req, res) => {
     if (!post) {
       return res.status(404).json({ error: "Post not found" });
     }
+    
+  const userIdStr = userId.toString();
+    const isAlreadyLiked = post.likes.some(id => id.toString() === userIdStr);
 
-    // Check if user already liked
-    if (post.likes.includes(userId)) {
+    if (isAlreadyLiked) {
       // Unlike
-      post.likes = post.likes.filter((id) => id.toString() !== userId);
-      post.likeCount = post.likes.length;
+      post.likes = post.likes.filter((id) => id.toString() !== userIdStr);
     } else {
       // Like
       post.likes.push(userId);
-      post.likeCount = post.likes.length;
     }
+    
+    post.likeCount = post.likes.length;
 
     await post.save();
     res.json(post);
