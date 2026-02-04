@@ -104,6 +104,7 @@ export const getUserStats = async (req, res) => {
     const user = await User.findById(userId);
 
     if (!user) {
+      // If user session is valid but user not found in DB, return 404
       return res.status(404).json({ message: "User not found" });
     }
 
@@ -133,7 +134,14 @@ export const getUserStats = async (req, res) => {
 
     // Add profile data if it exists
     if (profile) {
-      Object.assign(stats, profile.toObject());
+      const profileObj = profile.toObject();
+      // Ensure we don't overwrite stats with empty profile fields if profile just exists
+      stats.bio = profileObj.bio || "";
+      stats.avatar = profileObj.avatar || "";
+      stats.phone = profileObj.phone || "";
+      stats.location = profileObj.location || "";
+      stats.gardenType = profileObj.gardenType || "Outdoor";
+      stats.experience = profileObj.experience || "Beginner";
     }
 
     res.json(stats);
