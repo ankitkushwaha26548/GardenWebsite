@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_ROOT = import.meta.env.VITE_API_BASE_URL || import.meta.env.REN_URL;
+const API_ROOT = import.meta.env.VITE_API_BASE_URL || "https://leaflinebackend.onrender.com/api";
 const API_BASE = `${API_ROOT}/calendar`;
 
 const authHeaders = () => ({
