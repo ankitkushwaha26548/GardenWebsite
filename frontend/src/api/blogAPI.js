@@ -1,4 +1,4 @@
-const API_ROOT = import.meta.env.VITE_API_BASE_URL || import.meta.env.REN_URL;
+const API_ROOT = import.meta.env.VITE_API_BASE_URL || "https://leaflinebackend.onrender.com/api";
 
 export async function getBlogs(page = 1, limit = 10, category = "all", search = "") {
   try {
