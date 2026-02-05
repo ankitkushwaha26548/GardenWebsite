@@ -38,7 +38,8 @@ const profileAPI = {
       body: JSON.stringify(profileData),
     });
     if (!response.ok) {
-      const error = await response.json();
+      const error = await 
+      response.json().catch(() => ({})); // Handle case where response is not JSON
       throw new Error(error.message || error.error || "Failed to update profile");
     }
     const result = await response.json();

@@ -1,15 +1,10 @@
 # 🌿 LeafLine
 
-LeafLine is a full-stack MERN gardening website designed for plan management.  
+LeafLine is a full-stack MERN gardening website designed for plant management.  
 It helps users explore plant care guides, maintain plant records, and stay connected with nature digitally.
 
----
-
-## Project Type
-
+## 🚀 Project Type
 Full-Stack Web Application (MERN Stack)
-
----
 
 ## 🛠 Tech Stack
 
@@ -25,64 +20,46 @@ Full-Stack Web Application (MERN Stack)
 ### Database
 - MongoDB
 
----
-
-## Main Features
-
+## ✨ Main Features
 - 🌱 Plant Care & Guides  
 - 📚 Plant Database  
 - 📅 Dynamic Plant Calendar  
 - 📝 Blogs Section  
 - 🖼 Garden Gallery  
 
----
-
 ## 📂 Project Structure
 
 LeafLine/
-│
 ├── backend/
-│ ├── controller/
-│ ├── middleware/
-│ ├── models/
-│ ├── routes/
-│ ├── seed/
-│ ├── .env
-│ └── server.js
-│
+│   ├── controller/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── seed/
+│   ├── .env
+│   └── server.js
 ├── frontend/
-│ ├── public/
-│ ├── src/
-│ └── vite.config.js
-│
+│   ├── public/
+│   ├── src/
+│   └── vite.config.js
 └── README.md
 
-----
-
-##⚙️ Setup Instructions
+## ⚙️ Setup Instructions
 
 ### Backend Setup
-
-```bash
 cd backend
 npm install
 npm start
 
-
-### frontend Setup
-
-```bash
+### Frontend Setup
 cd frontend
 npm install
 npm run dev
 
-### Environment veriables(.env)
-
-```bash
+### Environment Variables (.env)
 PORT=5000
 MONGO_URI=your_mongodb_url
 JWT_SECRET=your_secret
 
-
-🧑‍💻 Usage
+### Usage
 Users can browse plant guides, explore plant data, read blogs, view garden gallery, and manage gardening knowledge easily using LeafLine.

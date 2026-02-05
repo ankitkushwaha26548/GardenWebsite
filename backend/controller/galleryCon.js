@@ -1,13 +1,27 @@
 import Gallery from "../models/Gallery.js";
 
 // Get all gallery posts
+
 export const getAllGallery = async (req, res) => {
   try {
-    const gallery = await Gallery.find()
-      .sort({ createdAt: -1 });
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 9; // Default to 9 posts per page
+    const skip = (page - 1) * limit;
 
-    console.log(`✓ Fetched ${gallery.length} gallery posts`);
-    res.json(gallery);
+    const gallery = await Gallery.find()
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    const total = await Gallery.countDocuments();
+
+    console.log(`✓ Fetched ${gallery.length} gallery posts (Page ${page})`);
+    res.json({
+      posts: gallery,
+      currentPage: page,
+      totalPages: Math.ceil(total / limit),
+      totalPosts: total
+    });
   } catch (err) {
     console.error("❌ Error fetching gallery:", err);
     res.status(500).json({ error: err.message });
@@ -79,17 +93,19 @@ export const likePost = async (req, res) => {
     if (!post) {
       return res.status(404).json({ error: "Post not found" });
     }
+    
+  const userIdStr = userId.toString();
+    const isAlreadyLiked = post.likes.some(id => id.toString() === userIdStr);
 
-    // Check if user already liked
-    if (post.likes.includes(userId)) {
+    if (isAlreadyLiked) {
       // Unlike
-      post.likes = post.likes.filter((id) => id.toString() !== userId);
-      post.likeCount = post.likes.length;
+      post.likes = post.likes.filter((id) => id.toString() !== userIdStr);
     } else {
       // Like
       post.likes.push(userId);
-      post.likeCount = post.likes.length;
     }
+    
+    post.likeCount = post.likes.length;
 
     await post.save();
     res.json(post);
