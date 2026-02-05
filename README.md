@@ -140,16 +140,8 @@ npm run lint       # Run ESLint
 
 ## 🚀 Deployment
 
-### Backend (Render/Heroku)
-1. Push code to GitHub
-2. Connect repository to Render/Heroku
-3. Set environment variables in dashboard
-4. Deploy automatically on push
-
-### Frontend (Vercel/Netlify)
-1. Build: `npm run build`
-2. Deploy `dist/` folder
-3. Set `VITE_API_BASE_URL` to production backend URL
+### Backend (Render)
+### Frontend (Netlify)
 
 ## 📝 Usage
 
@@ -161,23 +153,6 @@ Users can:
 5. **Read Blogs** – Learn gardening tips from community
 6. **Share Gallery** – Upload and view garden photos
 7. **Create Stories** – Share gardening experiences
-
-## 🛠 Troubleshooting
-
-### MongoDB Connection Error
-- Check `MONGO_URI` in `.env` is correct
-- Ensure IP whitelist includes your connection IP
-- Verify network access is enabled in MongoDB Atlas
-
-### CORS Errors
-- Backend CORS is configured for all origins
-- Check `VITE_API_BASE_URL` matches backend URL
-
-### Port Already in Use
-```bash
-# Change PORT in backend .env
-# Or kill process: lsof -i :5000 | grep LISTEN | awk '{print $2}' | xargs kill
-```
 
 ## 📄 License
 ISC
