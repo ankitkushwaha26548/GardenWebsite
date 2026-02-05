@@ -183,7 +183,7 @@ Users can:
 ISC
 
 ## 👨‍💻 Author
-Your Ankit
+Ankit
 
 ---
 
