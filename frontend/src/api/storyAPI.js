@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 const API_ROOT = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api"
 const API_BASE = `${API_ROOT}/stories`
+=======
+const API_ROOT = import.meta.env.VITE_API_BASE_URL || "https://leaflinebackend.onrender.com/api";
+const API_BASE = `${API_ROOT}/stories`;
+>>>>>>> 36dc283d0568dbf151c34e6c9ec536a3ca7f4bf6
 
 export async function getStories(page = 1, limit = 10, search = "") {
   try {
