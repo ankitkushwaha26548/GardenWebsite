@@ -1,4 +1,4 @@
-const API_ROOT = import.meta.env.VITE_API_BASE_URL || import.meta.env.REN_URL;
+const API_ROOT = import.meta.env.VITE_API_BASE_URL || "https://leaflinebackend.onrender.com/api";
 const PLANTS_ENDPOINT = `${API_ROOT}/plants`;
 const SEARCH_ENDPOINT = `${API_ROOT}/search`;
 const USER_PLANTS_ENDPOINT = `${API_ROOT}/user-plants`;
