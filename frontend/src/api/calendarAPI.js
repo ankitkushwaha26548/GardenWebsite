@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/calendar";
+const API_ROOT = import.meta.env.VITE_API_BASE_URL || import.meta.env.REN_URL;
+const API_BASE = `${API_ROOT}/calendar`;
 
 const authHeaders = () => ({
   Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
@@ -9,7 +10,7 @@ const authHeaders = () => ({
 const calendarAPI = {
   getMonthSchedules: async (userId, year, month) => {
     if (!userId) return [];
-    const res = await axios.get(`${API_URL}/month/${userId}`, {
+    const res = await axios.get(`${API_BASE}/month/${userId}`, {
       params: { year, month },
       headers: authHeaders(),
     });
@@ -17,7 +18,7 @@ const calendarAPI = {
   },
 
   createSchedule: async (data) => {
-    const res = await axios.post(`${API_URL}/create`, data, {
+    const res = await axios.post(`${API_BASE}/create`, data, {
       headers: authHeaders(),
     });
     return res.data;
@@ -25,7 +26,7 @@ const calendarAPI = {
 
   updateSchedule: async (scheduleId, data) => {
     const res = await axios.put(
-      `${API_URL}/${scheduleId}`,
+      `${API_BASE}/${scheduleId}`,
       data,
       { headers: authHeaders() }
     );
@@ -35,7 +36,7 @@ const calendarAPI = {
   markCompleted: async (scheduleId, userId, completed) => {
     try {
       const res = await axios.patch(
-        `${API_URL}/${scheduleId}/complete`,
+        `${API_BASE}/${scheduleId}/complete`,
         { completed },
         { 
           headers: {
@@ -77,7 +78,7 @@ const calendarAPI = {
 
   deleteSchedule: async (scheduleId, userId) => {
     const res = await axios.delete(
-      `${API_URL}/${scheduleId}`,
+      `${API_BASE}/${scheduleId}`,
       {
         data: { userId },
         headers: authHeaders(),

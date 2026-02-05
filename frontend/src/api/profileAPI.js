@@ -1,5 +1,6 @@
-const API_BASE_URL = "http://localhost:5000/api/profile";
-const USER_API_BASE_URL = "http://localhost:5000/api/users";
+const API_ROOT = import.meta.env.VITE_API_BASE_URL || import.meta.env.REN_URL;
+const API_BASE = `${API_ROOT}/profile`;
+const USER_API_BASE = `${API_ROOT}/users`;
 
 const getAuthHeaders = () => ({
   Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -9,7 +10,7 @@ const getAuthHeaders = () => ({
 const profileAPI = {
   // Get user profile
   getProfile: async () => {
-    const response = await fetch(`${API_BASE_URL}/`, {
+    const response = await fetch(`${API_BASE}/`, {
       method: "GET",
       headers: getAuthHeaders(),
     });
@@ -32,7 +33,7 @@ const profileAPI = {
 
   // Update user profile
   updateProfile: async (profileData) => {
-    const response = await fetch(`${API_BASE_URL}/`, {
+    const response = await fetch(`${API_BASE}/`, {
       method: "POST",
       headers: getAuthHeaders(),
       body: JSON.stringify(profileData),
@@ -48,7 +49,7 @@ const profileAPI = {
 
   // Get user stats (totalPlants, totalPosts, totalLikes, memberSince)
   getUserStats: async (userId) => {
-    const response = await fetch(`${API_BASE_URL}/stats`, {
+    const response = await fetch(`${API_BASE}/stats`, {
       method: "GET",
       headers: getAuthHeaders(),
     });
@@ -73,7 +74,7 @@ const profileAPI = {
 
   // Get profile by user ID
   getProfileByUserId: async (userId) => {
-    const response = await fetch(`${API_BASE_URL}/${userId}`, {
+    const response = await fetch(`${API_BASE}/${userId}`, {
       method: "GET",
       headers: getAuthHeaders(),
     });
@@ -83,7 +84,7 @@ const profileAPI = {
 
   // Upload avatar (accepts base64 string)
   uploadAvatar: async (avatarData) => {
-    const response = await fetch(`${API_BASE_URL}/avatar`, {
+    const response = await fetch(`${API_BASE}/avatar`, {
       method: "POST",
       headers: getAuthHeaders(),
       body: JSON.stringify({ avatar: avatarData }),
@@ -98,7 +99,7 @@ const profileAPI = {
 
   // Change password
   changePassword: async (currentPassword, newPassword) => {
-    const response = await fetch(`${USER_API_BASE_URL}/change-password`, {
+    const response = await fetch(`${USER_API_BASE}/change-password`, {
       method: "POST",
       headers: getAuthHeaders(),
       body: JSON.stringify({ currentPassword, newPassword }),

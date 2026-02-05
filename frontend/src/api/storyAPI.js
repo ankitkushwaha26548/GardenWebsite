@@ -1,4 +1,5 @@
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
+const API_ROOT = import.meta.env.VITE_API_BASE_URL || import.meta.env.REN_URL;
+const API_BASE = `${API_ROOT}/stories`;
 
 export async function getStories(page = 1, limit = 10, search = "") {
   try {
@@ -6,7 +7,8 @@ export async function getStories(page = 1, limit = 10, search = "") {
     const res = await fetch(`${API_BASE}/stories?${params}`);
     const json = await res.json();
     return json.data || [];
-  } catch {
+  } catch (error) {
+    console.error("Error fetching stories:", error);
     return [];
   }
 }

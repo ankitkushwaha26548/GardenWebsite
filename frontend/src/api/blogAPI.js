@@ -1,4 +1,4 @@
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
+const API_ROOT = import.meta.env.VITE_API_BASE_URL || import.meta.env.REN_URL;
 
 export async function getBlogs(page = 1, limit = 10, category = "all", search = "") {
   try {
@@ -9,23 +9,24 @@ export async function getBlogs(page = 1, limit = 10, category = "all", search = 
       ...(search && { search })
     });
 
-    const res = await fetch(`${API_BASE}/blogs?${params}`);
+    const res = await fetch(`${API_ROOT}/blogs?${params}`);
     const json = await res.json();
     return json.data || [];
-  } catch {
+  } catch (error) {
+    console.error("Error fetching blogs:", error);
     return [];
   }
 }
 
 export async function getBlogById(id) {
-  const res = await fetch(`${API_BASE}/blogs/${id}`);
+  const res = await fetch(`${API_ROOT}/blogs/${id}`);
   const json = await res.json();
   return json.data;
 }
 
 export async function createBlog(data, token) {
   console.log("📝 Sending blog data:", { title: data.title, summary: data.summary, contentLen: data.content?.length, image: data.image ? "present" : "null" });
-  const res = await fetch(`${API_BASE}/blogs`, {
+  const res = await fetch(`${API_ROOT}/blogs`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -40,7 +41,7 @@ export async function createBlog(data, token) {
 }
 
 export async function likeBlog(id, token) {
-  const res = await fetch(`${API_BASE}/blogs/like/${id}`, {
+  const res = await fetch(`${API_ROOT}/blogs/like/${id}`, {
     method: "PUT",
     headers: { Authorization: `Bearer ${token}` }
   });
@@ -49,7 +50,7 @@ export async function likeBlog(id, token) {
 }
 
 export async function deleteBlog(id, token) {
-  const res = await fetch(`${API_BASE}/blogs/${id}`, {
+  const res = await fetch(`${API_ROOT}/blogs/${id}`, {
     method: "DELETE",
     headers: { Authorization: `Bearer ${token}` }
   });
