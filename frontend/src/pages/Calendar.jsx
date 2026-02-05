@@ -67,7 +67,8 @@ export default function CalendarPage() {
     const fetchPlants = async () => {
       try {
         setLoadingPlants(true);
-        const res = await fetch("http://localhost:5000/api/user-plants/user", {
+        const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
+        const res = await fetch(`${API_BASE}/user-plants/user`, {
           headers: { Authorization: `Bearer ${token || ""}` },
         });
         if (!res.ok) throw new Error();
@@ -283,28 +284,28 @@ export default function CalendarPage() {
 
   // ⚠ UI RENDER CODE BELOW IS IDENTICAL TO YOUR ORIGINAL
   return (
-    <div className="p-6 bg-gradient-to-br from-green-50 via-lime-50 to-emerald-50 min-h-screen">
+    <div className="p-4 sm:p-6 bg-gradient-to-br from-green-50 via-lime-50 to-emerald-50 min-h-screen">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-center text-[#37604b] mb-4">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-center text-[#37604b] mb-3 sm:mb-4">
             🌿 Dynamic Plant Calendar
           </h1>
 
           {/* Messages */}
           {error && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4 text-red-700">
+            <div className="bg-red-50 border border-red-200 rounded-lg sm:rounded-lg p-3 sm:p-4 mb-3 sm:mb-4 text-red-700 text-sm">
               {error}
             </div>
           )}
           {success && (
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4 text-green-700">
+            <div className="bg-green-50 border border-green-200 rounded-lg sm:rounded-lg p-3 sm:p-4 mb-3 sm:mb-4 text-green-700 text-sm">
               {success}
             </div>
           )}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
           {/* Calendar */}
           <div className="lg:col-span-2">
             <div className="bg-white rounded-2xl border shadow-sm p-5">

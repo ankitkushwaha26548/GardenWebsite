@@ -94,10 +94,10 @@ export default function AuthPage() {
     setLoading(true);
 
     try {
-      const apiUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+      const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
       const url = isLogin
-        ? `${apiUrl}/api/users/login`
-        : `${apiUrl}/api/users/register`;
+        ? `${API_BASE}/users/login`
+        : `${API_BASE}/users/register`;
 
       const bodyData = isLogin
         ? { email: form.email, password: form.password }

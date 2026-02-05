@@ -188,14 +188,14 @@ export default function GalleryPage() {
   };
 
   return (
-    <div className="p-6 bg-gradient-to-br from-green-50 via-lime-50 to-emerald-50 min-h-screen">
+    <div className="p-4 sm:p-6 bg-gradient-to-br from-green-50 via-lime-50 to-emerald-50 min-h-screen">
       {/* Header */}
-      <div className="max-w-7xl mx-auto mb-8">
-        <h1 className="text-3xl font-bold text-center text-[#37604b] mb-4">
+      <div className="max-w-7xl mx-auto mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-center text-[#37604b] mb-3 sm:mb-4">
           🌿 Garden Gallery
         </h1>
         {!isLoggedIn && (
-          <p className="text-center text-gray-600 text-sm mb-4">
+          <p className="text-center text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4 px-2">
             Browse gallery posts. <span className="text-green-600 font-medium">Log in</span> to upload, like, and interact with posts.
           </p>
         )}
@@ -207,7 +207,7 @@ export default function GalleryPage() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="bg-red-50 border border-red-200 rounded-xl p-4 mb-4 text-red-700 max-w-xl mx-auto"
+              className="bg-red-50 border border-red-200 rounded-lg sm:rounded-xl p-3 sm:p-4 mb-3 sm:mb-4 text-red-700 text-xs sm:text-sm max-w-2xl mx-auto"
             >
               {error}
             </motion.div>
@@ -217,7 +217,7 @@ export default function GalleryPage() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="bg-green-50 border border-green-200 rounded-xl p-4 mb-4 text-green-700 max-w-xl mx-auto"
+              className="bg-green-50 border border-green-200 rounded-lg sm:rounded-xl p-3 sm:p-4 mb-3 sm:mb-4 text-green-700 text-xs sm:text-sm max-w-2xl mx-auto"
             >
               {success}
             </motion.div>
@@ -225,15 +225,15 @@ export default function GalleryPage() {
         </AnimatePresence>
 
         {/* Add Photo Button */}
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center mb-6 sm:mb-8">
           {isLoggedIn ? (
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowModal(true)}
-              className="flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white px-8 py-3 rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl"
+              className="flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white px-5 sm:px-8 py-2.5 sm:py-3 rounded-lg sm:rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl text-sm sm:text-base"
             >
-              <Plus size={20} />
+              <Plus size={18} className="sm:w-5 sm:h-5" />
               Upload Garden Photo
             </motion.button>
           ) : (
@@ -244,9 +244,9 @@ export default function GalleryPage() {
                 setError("Please log in to upload photos");
                 setTimeout(() => navigate("/login"), 1500);
               }}
-              className="flex items-center gap-2 bg-gradient-to-r from-gray-400 to-gray-500 text-white px-8 py-3 rounded-xl hover:from-gray-500 hover:to-gray-600 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl cursor-pointer"
+              className="flex items-center gap-2 bg-gradient-to-r from-gray-400 to-gray-500 text-white px-5 sm:px-8 py-2.5 sm:py-3 rounded-lg sm:rounded-xl hover:from-gray-500 hover:to-gray-600 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl cursor-pointer text-sm sm:text-base"
             >
-              <LogIn size={20} />
+              <LogIn size={18} className="sm:w-5 sm:h-5" />
               Log in to Upload Photo
             </motion.button>
           )}
@@ -257,17 +257,17 @@ export default function GalleryPage() {
       {loading && (
         <div className="flex flex-col items-center justify-center h-64">
           <div className="relative">
-            <div className="w-16 h-16 border-4 border-green-200 rounded-full"></div>
-            <div className="absolute top-0 left-0 w-16 h-16 border-4 border-green-600 rounded-full border-t-transparent animate-spin"></div>
+            <div className="w-14 sm:w-16 h-14 sm:h-16 border-4 border-green-200 rounded-full"></div>
+            <div className="absolute top-0 left-0 w-14 sm:w-16 h-14 sm:h-16 border-4 border-green-600 rounded-full border-t-transparent animate-spin"></div>
           </div>
-          <p className="mt-4 text-gray-600 font-medium">Loading garden posts...</p>
+          <p className="mt-4 text-gray-600 font-medium text-sm">Loading garden posts...</p>
         </div>
       )}
 
       {/* Gallery Grid */}
       {!loading && posts.length > 0 && (
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             <AnimatePresence mode="popLayout">
               {posts.map((post, index) => (
                 <motion.div

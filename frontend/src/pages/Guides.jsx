@@ -106,73 +106,75 @@ function Guides() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-lime-50 to-emerald-50 p-6">
-      <h1 className="text-3xl font-bold text-center text-[#37604b] mb-10">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-lime-50 to-emerald-50 p-4 sm:p-6">
+      <h1 className="text-2xl sm:text-3xl font-bold text-center text-[#37604b] mb-6 sm:mb-10">
         🌿 Plant Care & Guides
       </h1>
 
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8">
         {/* Sidebar */}
-        <aside className="bg-white rounded-2xl border shadow-sm p-5">
-          <div className="flex justify-between mb-4">
-            <h2 className="font-bold flex items-center gap-2">
-              <Leaf className="w-5 h-5 text-emerald-600" />
+        <aside className="bg-white rounded-lg sm:rounded-2xl border shadow-sm p-4 sm:p-5">
+          <div className="flex justify-between mb-4 items-center">
+            <h2 className="font-bold flex items-center gap-2 text-base sm:text-lg">
+              <Leaf className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600" />
               Your Plants
             </h2>
-            <button onClick={() => setShowAddForm(true)} className="text-emerald-600 hover:text-emerald-700 font-semibold">
+            <button onClick={() => setShowAddForm(true)} className="text-emerald-600 hover:text-emerald-700 font-semibold text-sm sm:text-base">
               + Add
             </button>
           </div>
 
           {isFetching ? (
-            <p>Loading...</p>
+            <p className="text-sm text-gray-600">Loading...</p>
           ) : (
-            userPlants.map(plant => (
-              <div
-                key={plant._id}
-                onClick={() => handleSelectPlant(plant)}
-                className="p-3 rounded-xl bg-gray-50 hover:bg-gray-100 cursor-pointer flex justify-between"
-              >
-                <span>{plant.customName}</span>
-                <button onClick={(e) => { e.stopPropagation(); handleDelete(plant._id) }}>
-                  <Trash2 className="w-4 h-4 text-gray-400 hover:text-red-500" />
-                </button>
-              </div>
-            ))
+            <div className="space-y-2">
+              {userPlants.map(plant => (
+                <div
+                  key={plant._id}
+                  onClick={() => handleSelectPlant(plant)}
+                  className="p-3 rounded-lg sm:rounded-xl bg-gray-50 hover:bg-gray-100 cursor-pointer flex justify-between items-center gap-2 text-sm"
+                >
+                  <span className="truncate">{plant.customName}</span>
+                  <button onClick={(e) => { e.stopPropagation(); handleDelete(plant._id) }} className="flex-shrink-0">
+                    <Trash2 className="w-4 h-4 text-gray-400 hover:text-red-500 transition-colors" />
+                  </button>
+                </div>
+              ))}
+            </div>
           )}
 
           {/* Add Plant Form Modal */}
           {showAddForm && (
-            <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50 p-4">
-              <div className="bg-white rounded-2xl p-6 max-w-md w-full shadow-xl border border-gray-100">
-                <h3 className="text-2xl font-bold text-emerald-700 mb-4 flex items-center gap-2">
-                  <Plus className="w-6 h-6" />
+            <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50 p-4">
+              <div className="bg-white rounded-lg sm:rounded-2xl p-4 sm:p-6 max-w-md w-full shadow-xl border border-gray-100 max-h-[90vh] overflow-y-auto">
+                <h3 className="text-xl sm:text-2xl font-bold text-emerald-700 mb-4 flex items-center gap-2">
+                  <Plus className="w-5 h-5 sm:w-6 sm:h-6" />
                   Add New Plant
                 </h3>
-                <form onSubmit={handleAddPlant} className="space-y-4">
+                <form onSubmit={handleAddPlant} className="space-y-3 sm:space-y-4">
                   <input
                     type="text"
                     placeholder="Enter plant name..."
                     value={formName}
                     onChange={(e) => setFormName(e.target.value)}
-                    className="w-full px-4 py-2 border border-emerald-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-2 text-sm border border-emerald-200 rounded-lg sm:rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400"
                     autoFocus
                   />
-                  <div className="flex gap-3 justify-end">
+                  <div className="flex gap-2 sm:gap-3 justify-end flex-col-reverse sm:flex-row">
                     <button
                       type="button"
                       onClick={() => {
                         setShowAddForm(false)
                         setFormName('')
                       }}
-                      className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors font-semibold"
+                      className="px-3 sm:px-4 py-2 text-sm rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors font-semibold"
                     >
                       Cancel
                     </button>
                     <button
                       type="submit"
                       disabled={!formName.trim()}
-                      className="px-4 py-2 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold"
+                      className="px-3 sm:px-4 py-2 text-sm rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold"
                     >
                       Add Plant
                     </button>

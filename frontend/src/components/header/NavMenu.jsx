@@ -15,16 +15,16 @@ export default function NavMenu({ menuOpen }) {
   return (
     <ul
       className={`nav-menu fixed md:static top-20 left-0 md:flex md:gap-1 bg-white md:bg-transparent w-full md:w-auto
-         h-[calc(100vh-80px)] md:h-auto flex-col md:flex-row items-start md:items-center p-6 md:p-0 shadow-lg md:shadow-none 
-         transition-transform duration-300 ${
+         max-h-[calc(100vh-80px)] md:h-auto flex-col md:flex-row items-start md:items-center p-3 md:p-0 shadow-lg md:shadow-none custom-scrollbar
+         transition-transform duration-300 overflow-y-auto ${
            menuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
          }`}
     >
       {links.map(({ to, label, icon }) => (
-        <li key={to}>
+        <li key={to} className="w-full md:w-auto">
           <Link
             to={to}
-            className="flex items-center gap-0.5 px-4 py-2 rounded-lg hover:text-pink-500 hover:underline hover:underline-offset-4 transition-all"
+            className="flex items-center gap-2 px-3 md:px-4 py-3 md:py-2 rounded-lg text-sm md:text-base hover:text-pink-500 hover:bg-gray-100 md:hover:bg-transparent hover:underline hover:underline-offset-4 transition-all w-full md:w-auto"
           >
             <i className={`fas ${icon}`}></i>
             {label}

@@ -6,27 +6,27 @@ const PlantCard = ({ plant, onClick }) => {
 
   return (
     <div 
-className="bg-white rounded-2xl shadow-md 
+className="bg-white rounded-lg sm:rounded-2xl shadow-md 
            hover:shadow-2xl transition-all duration-300 
            overflow-hidden cursor-pointer 
-           transform hover:-translate-y-2 hover:scale-[1.01]
-           border border-gray-100 group"
+           transform hover:-translate-y-1 sm:hover:-translate-y-2 hover:scale-[1.01]
+           border border-gray-100 group h-full"
       onClick={() => onClick(plant)}
     >
       {/* For My Plants - Simple card with just name and button */}
       {isMyPlant ? (
-        <div className="p-6 flex flex-col justify-between h-full rounded-2xl border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-gray-50">
+        <div className="p-3 sm:p-6 flex flex-col justify-between h-full rounded-lg sm:rounded-2xl border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-gray-50">
   <div>
     {/* Header Strip */}
-    <div className=" p-5 text-emerald-600 rounded-xl shadow-md">
-      <h2 className="text-2xl font-bold tracking-tight">{plant.name}</h2>
+    <div className="p-3 sm:p-5 text-emerald-600 rounded-lg sm:rounded-xl shadow-md">
+      <h2 className="text-lg sm:text-2xl font-bold tracking-tight line-clamp-2">{plant.name}</h2>
     </div>
 
     {/* About Section */}
     {plant.about && (
-      <div className="mt-5">
-        <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-2">About</p>
-        <p className="text-sm text-gray-700 leading-relaxed line-clamp-3">
+      <div className="mt-3 sm:mt-5">
+        <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-1 sm:mb-2">About</p>
+        <p className="text-xs sm:text-sm text-gray-700 leading-relaxed line-clamp-3">
           {plant.about}
         </p>
       </div>
@@ -34,17 +34,17 @@ className="bg-white rounded-2xl shadow-md
 
     {/* Quick Info Grid */}
     {(plant.sunlight || plant.watering) && (
-      <div className="grid grid-cols-2 gap-4 mt-6">
+      <div className="grid grid-cols-2 gap-2 sm:gap-4 mt-3 sm:mt-6">
         {plant.sunlight && plant.sunlight !== "Not specified" && (
-          <div className="bg-gradient-to-br from-yellow-100 to-yellow-50 rounded-xl p-4 border border-yellow-200 shadow-sm">
-            <p className="text-xs text-yellow-700 font-semibold mb-1">☀️ Sunlight</p>
-            <p className="text-sm text-yellow-900">{plant.sunlight}</p>
+          <div className="bg-gradient-to-br from-yellow-100 to-yellow-50 rounded-lg sm:rounded-xl p-2 sm:p-4 border border-yellow-200 shadow-sm">
+            <p className="text-xs text-yellow-700 font-semibold mb-0.5 sm:mb-1">☀️ Sunlight</p>
+            <p className="text-xs sm:text-sm text-yellow-900 line-clamp-1">{plant.sunlight}</p>
           </div>
         )}
         {plant.watering && plant.watering !== "Not specified" && (
-          <div className="bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl p-4 border border-blue-200 shadow-sm">
-            <p className="text-xs text-blue-700 font-semibold mb-1">💧 Watering</p>
-            <p className="text-sm text-blue-900">{plant.watering}</p>
+          <div className="bg-gradient-to-br from-blue-100 to-blue-50 rounded-lg sm:rounded-xl p-2 sm:p-4 border border-blue-200 shadow-sm">
+            <p className="text-xs text-blue-700 font-semibold mb-0.5 sm:mb-1">💧 Watering</p>
+            <p className="text-xs sm:text-sm text-blue-900 line-clamp-1">{plant.watering}</p>
           </div>
         )}
       </div>
@@ -57,7 +57,7 @@ className="bg-white rounded-2xl shadow-md
       e.stopPropagation();
       onClick(plant);
     }}
-    className="mt-6 w-full cursor-pointer text-gray-600 hover:bg-gray-100 py-3 rounded-xl transition-transform duration-200 text-sm font-semibold shadow-md hover:shadow-lg hover:scale-[1.03]"
+    className="mt-3 sm:mt-6 w-full cursor-pointer text-gray-600 hover:bg-gray-100 py-2 sm:py-3 rounded-lg sm:rounded-xl transition-transform duration-200 text-xs sm:text-sm font-semibold shadow-md hover:shadow-lg hover:scale-[1.03]"
   >
     View Full Details
   </button>
@@ -66,20 +66,20 @@ className="bg-white rounded-2xl shadow-md
         /* For Database Plants - Show all details */
         <>
           {/* Plant Name Header */}
-          <div className="p-5 text-gray-800 border-b border-gray-200 bg-green-50">
-            <h2 className="text-xl font-bold mb-1">{plant.name}</h2>
+          <div className="p-3 sm:p-5 text-gray-800 border-b border-gray-200 bg-green-50">
+            <h2 className="text-lg sm:text-xl font-bold mb-0.5 sm:mb-1 line-clamp-2">{plant.name}</h2>
             {plant.commonName && (
-              <p className="text-sm text-green-100">Common: {plant.commonName}</p>
+              <p className="text-xs sm:text-sm text-green-700 line-clamp-1">Common: {plant.commonName}</p>
             )}
           </div>
           
           {/* Plant Info Content */}
-          <div className="p-5 space-y-4">
+          <div className="p-3 sm:p-5 space-y-3 sm:space-y-4">
             {/* Botanical Name */}
             {plant.botanicalName && (
-              <div className="border-b border-gray-200 pb-3">
+              <div className="border-b border-gray-200 pb-2 sm:pb-3">
                 <p className="text-xs text-gray-500 font-medium uppercase tracking-wide mb-1">Botanical Name</p>
-                <p className="text-sm text-gray-700 italic">{plant.botanicalName}</p>
+                <p className="text-xs sm:text-sm text-gray-700 italic line-clamp-2">{plant.botanicalName}</p>
               </div>
             )}
             

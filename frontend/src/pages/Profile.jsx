@@ -203,31 +203,31 @@ export default function Profile() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-lime-50 to-emerald-50 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-lime-50 to-emerald-50 p-4 sm:p-6">
       <div className="max-w-6xl mx-auto">
         {/* Page Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-[#37604b] mb-2">My Profile</h1>
-          <p className="text-gray-600">Manage your personal information and gardening preferences</p>
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-[#37604b] mb-2">My Profile</h1>
+          <p className="text-sm sm:text-base text-gray-600">Manage your personal information and gardening preferences</p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Left Column - Main Profile & Details */}
           <div className="lg:col-span-2 space-y-6">
             {/* Profile Header Card */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-5">
-                  <div className="relative">
-                    <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white text-4xl font-bold overflow-hidden shadow-lg">
+            <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-5">
+                <div className="flex items-center gap-3 sm:gap-5 w-full sm:w-auto">
+                  <div className="relative flex-shrink-0">
+                    <div className="w-20 sm:w-24 h-20 sm:h-24 rounded-xl sm:rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white text-2xl sm:text-4xl font-bold overflow-hidden shadow-lg">
                       {profileImage || profileData?.avatar ? (
                         <img src={profileImage || profileData?.avatar} alt="Profile" className="w-full h-full object-cover" />
                       ) : (
                         userName?.charAt(0).toUpperCase()
                       )}
                     </div>
-                    <label htmlFor="profileImageInput" className="absolute -bottom-1 -right-1 bg-white p-2 rounded-full cursor-pointer shadow-lg border border-gray-200 hover:bg-gray-50 transition">
-                      <Camera size={14} className="text-emerald-600" />
+                    <label htmlFor="profileImageInput" className="absolute -bottom-1 -right-1 bg-white p-1.5 sm:p-2 rounded-full cursor-pointer shadow-lg border border-gray-200 hover:bg-gray-50 transition">
+                      <Camera size={12} className="sm:w-4 sm:h-4 text-emerald-600" />
                     </label>
                     <input
                       id="profileImageInput"
@@ -238,16 +238,16 @@ export default function Profile() {
                     />
                   </div>
 
-                  <div>
-                    <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                  <div className="flex-grow">
+                    <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 break-words">
                       {userName}
                     </h2>
-                    <div className="flex items-center gap-3">
-                      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-green-50 to-emerald-50 text-emerald-700 text-sm font-medium border border-emerald-100">
-                        <Shield size={14} />
+                    <div className="flex flex-col gap-2">
+                      <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-gradient-to-r from-green-50 to-emerald-50 text-emerald-700 text-xs sm:text-sm font-medium border border-emerald-100 w-fit">
+                        <Shield size={12} className="sm:w-4 sm:h-4" />
                         {profileData?.experience || 'Beginner'} Gardener
                       </div>
-                      <div className="text-sm text-gray-500">
+                      <div className="text-xs sm:text-sm text-gray-500">
                         Member since {profileStats.memberSince}
                       </div>
                     </div>
@@ -256,82 +256,82 @@ export default function Profile() {
 
                 <button
                   onClick={logout}
-                  className="flex items-center gap-2 px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                  className="flex items-center gap-2 px-3 sm:px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors text-sm sm:text-base w-full sm:w-auto justify-center sm:justify-start"
                 >
-                  <LogOut size={18} />
+                  <LogOut size={16} className="sm:w-5 sm:h-5" />
                   Logout
                 </button>
               </div>
             </div>
 
             {/* Profile Details Card */}
-            <div className="bg-white rounded-2xl shadow-lg">
-              <div className="px-6 py-5 border-b border-gray-100">
-                <div className="flex items-center justify-between">
+            <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg">
+              <div className="px-4 sm:px-6 py-4 sm:py-5 border-b border-gray-100">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-1 flex items-center gap-3">
-                      <User className="text-emerald-600" size={22} />
-                      Profile Information
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 flex items-center gap-2 sm:gap-3">
+                      <User className="w-5 sm:w-6 h-5 sm:h-6 text-emerald-600" />
+                      <span>Profile Information</span>
                     </h3>
-                    <p className="text-gray-500 text-sm">Update your gardening profile details</p>
+                    <p className="text-xs sm:text-sm text-gray-500">Update your gardening profile details</p>
                   </div>
                   <button
                     onClick={() => setIsEditing(!isEditing)}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
+                    className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-medium transition-all text-sm whitespace-nowrap ${
                       isEditing 
                         ? 'bg-red-50 text-red-600 hover:bg-red-100' 
                         : 'bg-emerald-50 text-emerald-600 hover:bg-emerald-100'
                     }`}
                   >
-                    {isEditing ? <X size={16} /> : <Edit2 size={16} />}
+                    {isEditing ? <X size={14} className="sm:w-4 sm:h-4" /> : <Edit2 size={14} className="sm:w-4 sm:h-4" />}
                     {isEditing ? 'Cancel' : 'Edit'}
                   </button>
                 </div>
               </div>
 
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 {isEditing ? (
-                  <div className="space-y-6">
+                  <div className="space-y-4 sm:space-y-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Bio</label>
+                      <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Bio</label>
                       <textarea
                         rows="3"
                         value={editFormData.bio}
                         onChange={e => handleChange('bio', e.target.value)}
                         placeholder="Tell us about your gardening journey..."
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm border border-gray-300 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
                       />
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                        <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Location</label>
                         <input
                           value={editFormData.location}
                           onChange={e => handleChange('location', e.target.value)}
                           placeholder="Enter your location"
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm border border-gray-300 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                        <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Phone</label>
                         <input
                           value={editFormData.phone}
                           onChange={e => handleChange('phone', e.target.value)}
                           placeholder="Enter your phone number"
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm border border-gray-300 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                         />
                       </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Garden Type</label>
+                        <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Garden Type</label>
                         <select
                           value={editFormData.gardenType}
                           onChange={e => handleChange('gardenType', e.target.value)}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm border border-gray-300 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
                         >
                           <option value="Outdoor">🌳 Outdoor Garden</option>
                           <option value="Indoor">🏠 Indoor Garden</option>
@@ -340,11 +340,11 @@ export default function Profile() {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Experience Level</label>
+                        <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Experience Level</label>
                         <select
                           value={editFormData.experience}
                           onChange={e => handleChange('experience', e.target.value)}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm border border-gray-300 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
                         >
                           <option value="Beginner">🌱 Beginner</option>
                           <option value="Intermediate">🌿 Intermediate</option>
@@ -356,16 +356,16 @@ export default function Profile() {
                     <button
                       onClick={handleSave}
                       disabled={loading}
-                      className="w-full mt-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white py-3.5 rounded-xl font-medium flex items-center justify-center gap-2 transition-all disabled:opacity-50 shadow-lg hover:shadow-xl"
+                      className="w-full mt-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white py-3 sm:py-3.5 rounded-lg sm:rounded-xl font-medium flex items-center justify-center gap-2 transition-all disabled:opacity-50 shadow-lg hover:shadow-xl text-sm sm:text-base"
                     >
                       {loading ? (
                         <>
-                          <RefreshCw className="animate-spin" size={18} />
+                          <RefreshCw className="animate-spin w-4 h-4 sm:w-5 sm:h-5" size={18} />
                           Saving...
                         </>
                       ) : (
                         <>
-                          <Save size={18} />
+                          <Save className="w-4 h-4 sm:w-5 sm:h-5" size={18} />
                           Save Changes
                         </>
                       )}
@@ -440,148 +440,92 @@ export default function Profile() {
           {/* Right Column - Stats & Actions */}
           <div className="space-y-6">
             {/* Stats Dashboard */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
-                  <TrendingUp className="text-white" size={20} />
+            <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6">
+              <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center flex-shrink-0">
+                  <TrendingUp className="text-white w-4 h-4 sm:w-5 sm:h-5" size={20} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">Your Stats</h3>
-                  <p className="text-sm text-gray-500">Garden activity overview</p>
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900">Your Stats</h3>
+                  <p className="text-xs sm:text-sm text-gray-500">Garden activity overview</p>
                 </div>
               </div>
 
-              <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-emerald-100">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center shadow-sm">
-                      <Leaf className="text-emerald-600" size={18} />
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-center justify-between gap-3 p-3 sm:p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg sm:rounded-xl border border-emerald-100">
+                  <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                    <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-lg bg-white flex items-center justify-center shadow-sm flex-shrink-0">
+                      <Leaf className="text-emerald-600 w-4 h-4 sm:w-5 sm:h-5" size={18} />
                     </div>
-                    <div>
-                      <p className="font-medium text-gray-800">Plants</p>
-                      <p className="text-sm text-gray-500">Total count</p>
+                    <div className="min-w-0">
+                      <p className="font-medium text-gray-800 text-sm">Plants</p>
+                      <p className="text-xs text-gray-500">Total count</p>
                     </div>
                   </div>
-                  <span className="text-2xl font-bold text-emerald-700">{profileStats.totalPlants}</span>
+                  <span className="text-xl sm:text-2xl font-bold text-emerald-700 flex-shrink-0">{profileStats.totalPlants}</span>
                 </div>
                 
-                <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl border border-blue-100">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center shadow-sm">
-                      <Upload className="text-blue-600" size={18} />
+                <div className="flex items-center justify-between gap-3 p-3 sm:p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg sm:rounded-xl border border-blue-100">
+                  <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                    <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-lg bg-white flex items-center justify-center shadow-sm flex-shrink-0">
+                      <Upload className="text-blue-600 w-4 h-4 sm:w-5 sm:h-5" size={18} />
                     </div>
-                    <div>
-                      <p className="font-medium text-gray-800">Gallery Posts</p>
-                      <p className="text-sm text-gray-500">Photos shared</p>
+                    <div className="min-w-0">
+                      <p className="font-medium text-gray-800 text-sm">Gallery Posts</p>
+                      <p className="text-xs text-gray-500">Photos shared</p>
                     </div>
                   </div>
-                  <span className="text-2xl font-bold text-blue-700">{profileStats.totalPosts}</span>
+                  <span className="text-xl sm:text-2xl font-bold text-blue-700 flex-shrink-0">{profileStats.totalPosts}</span>
                 </div>
                 
-                <div className="flex items-center justify-between p-4 bg-gradient-to-r from-pink-50 to-rose-50 rounded-xl border border-pink-100">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center shadow-sm">
-                      <Heart className="text-pink-600" size={18} />
+                <div className="flex items-center justify-between gap-3 p-3 sm:p-4 bg-gradient-to-r from-pink-50 to-rose-50 rounded-lg sm:rounded-xl border border-pink-100">
+                  <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                    <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-lg bg-white flex items-center justify-center shadow-sm flex-shrink-0">
+                      <Heart className="text-pink-600 w-4 h-4 sm:w-5 sm:h-5" size={18} />
                     </div>
-                    <div>
-                      <p className="font-medium text-gray-800">Likes Received</p>
-                      <p className="text-sm text-gray-500">Community likes</p>
+                    <div className="min-w-0">
+                      <p className="font-medium text-gray-800 text-sm">Likes Received</p>
+                      <p className="text-xs text-gray-500">Community likes</p>
                     </div>
                   </div>
-                  <span className="text-2xl font-bold text-pink-700">{profileStats.totalLikes}</span>
+                  <span className="text-xl sm:text-2xl font-bold text-pink-700 flex-shrink-0">{profileStats.totalLikes}</span>
                 </div>
               </div>
             </div>
 
             {/* Account Settings */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
-                  <Settings className="text-white" size={20} />
+            <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6">
+              <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center flex-shrink-0">
+                  <Settings className="text-white w-4 h-4 sm:w-5 sm:h-5" size={20} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">Account</h3>
-                  <p className="text-sm text-gray-500">Manage your settings</p>
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900">Account</h3>
+                  <p className="text-xs sm:text-sm text-gray-500">Manage your settings</p>
                 </div>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 <button
                   onClick={() => setShowPasswordModal(true)}
-                  className="w-full flex items-center gap-3 p-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors text-gray-800"
+                  className="w-full flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors text-gray-800"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center">
-                    <Lock className="text-emerald-600" size={18} />
+                  <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-lg bg-white flex items-center justify-center flex-shrink-0">
+                    <Lock className="text-emerald-600 w-4 h-4 sm:w-5 sm:h-5" size={18} />
                   </div>
-                  <div className="text-left">
-                    <p className="font-medium">Change Password</p>
-                    <p className="text-sm text-gray-500">Update your password</p>
-                  </div>
-                </button>
-                <button className="w-full flex items-center gap-3 p-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors text-gray-800">
-                  <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center">
-                    <Mail className="text-blue-600" size={18} />
-                  </div>
-                  <div className="text-left">
-                    <p className="font-medium">Email Settings</p>
-                    <p className="text-sm text-gray-500">Manage notifications</p>
+                  <div className="text-left min-w-0">
+                    <p className="font-medium text-xs sm:text-sm truncate">Change Password</p>
+                    <p className="text-xs text-gray-500">Update your password</p>
                   </div>
                 </button>
-              </div>
-            </div>
-
-            {/* Quick Links */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
-                  <BookOpen className="text-white" size={20} />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900">Quick Links</h3>
-                  <p className="text-sm text-gray-500">Navigate quickly</p>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <button
-                  onClick={() => navigate('/plants')}
-                  className="w-full flex items-center justify-between p-3 hover:bg-green-50 rounded-lg transition-colors text-gray-800 group"
-                >
-                  <span className="flex items-center gap-2 font-medium">
-                    <Leaf className="text-emerald-600" size={16} />
-                    My Plants
-                  </span>
-                  <span className="text-emerald-600 group-hover:translate-x-1 transition-transform">→</span>
-                </button>
-                <button
-                  onClick={() => navigate('/gallery')}
-                  className="w-full flex items-center justify-between p-3 hover:bg-blue-50 rounded-lg transition-colors text-gray-800 group"
-                >
-                  <span className="flex items-center gap-2 font-medium">
-                    <Image className="text-blue-600" size={16} />
-                    My Gallery
-                  </span>
-                  <span className="text-blue-600 group-hover:translate-x-1 transition-transform">→</span>
-                </button>
-                <button
-                  onClick={() => navigate('/calendar')}
-                  className="w-full flex items-center justify-between p-3 hover:bg-purple-50 rounded-lg transition-colors text-gray-800 group"
-                >
-                  <span className="flex items-center gap-2 font-medium">
-                    <Calendar className="text-purple-600" size={16} />
-                    Schedules
-                  </span>
-                  <span className="text-purple-600 group-hover:translate-x-1 transition-transform">→</span>
-                </button>
-                <button
-                  onClick={() => navigate('/blogs')}
-                  className="w-full flex items-center justify-between p-3 hover:bg-pink-50 rounded-lg transition-colors text-gray-800 group"
-                >
-                  <span className="flex items-center gap-2 font-medium">
-                    <BookOpen className="text-pink-600" size={16} />
-                    My Stories
-                  </span>
-                  <span className="text-pink-600 group-hover:translate-x-1 transition-transform">→</span>
+                <button className="w-full flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors text-gray-800">
+                  <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-lg bg-white flex items-center justify-center flex-shrink-0">
+                    <Mail className="text-blue-600 w-4 h-4 sm:w-5 sm:h-5" size={18} />
+                  </div>
+                  <div className="text-left min-w-0">
+                    <p className="font-medium text-xs sm:text-sm truncate">Email Settings</p>
+                    <p className="text-xs text-gray-500">Manage notifications</p>
+                  </div>
                 </button>
               </div>
             </div>
@@ -591,73 +535,73 @@ export default function Profile() {
         {/* Password Change Modal */}
         {showPasswordModal && (
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6">
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center">
-                    <Lock className="text-white" size={20} />
+            <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl max-w-md w-full p-4 sm:p-6 max-h-[90vh] overflow-y-auto">
+              <div className="flex items-center justify-between mb-4 sm:mb-6 gap-2">
+                <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                  <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center flex-shrink-0">
+                    <Lock className="text-white w-4 h-4 sm:w-5 sm:h-5" size={20} />
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900">Change Password</h3>
-                    <p className="text-sm text-gray-500">Update your account password</p>
+                  <div className="min-w-0">
+                    <h3 className="text-base sm:text-xl font-bold text-gray-900">Change Password</h3>
+                    <p className="text-xs sm:text-sm text-gray-500">Update your account password</p>
                   </div>
                 </div>
                 <button
                   onClick={() => setShowPasswordModal(false)}
-                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                  className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
                 >
                   <X size={20} />
                 </button>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Current Password</label>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Current Password</label>
                   <input
                     type="password"
                     placeholder="Enter current password"
                     value={passwordForm.currentPassword}
                     onChange={(e) => setPasswordForm({...passwordForm, currentPassword: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm border border-gray-300 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">New Password</label>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">New Password</label>
                   <input
                     type="password"
                     placeholder="Enter new password"
                     value={passwordForm.newPassword}
                     onChange={(e) => setPasswordForm({...passwordForm, newPassword: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm border border-gray-300 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
                   <input
                     type="password"
                     placeholder="Confirm new password"
                     value={passwordForm.confirmPassword}
                     onChange={(e) => setPasswordForm({...passwordForm, confirmPassword: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm border border-gray-300 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   />
                 </div>
 
-                <div className="flex gap-3 pt-4">
+                <div className="flex flex-col-reverse sm:flex-row gap-2 sm:gap-3 pt-3 sm:pt-4">
                   <button
                     onClick={() => setShowPasswordModal(false)}
-                    className="flex-1 px-4 py-3 border border-gray-300 text-gray-700 hover:bg-gray-50 rounded-xl transition-colors font-medium"
+                    className="flex-1 px-3 sm:px-4 py-2 sm:py-3 text-sm border border-gray-300 text-gray-700 hover:bg-gray-50 rounded-lg sm:rounded-xl transition-colors font-medium"
                   >
                     Cancel
                   </button>
                   <button
                     onClick={handlePasswordChange}
                     disabled={loading}
-                    className="flex-1 px-4 py-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-xl font-medium flex items-center justify-center gap-2 disabled:opacity-50"
+                    className="flex-1 px-3 sm:px-4 py-2 sm:py-3 text-sm bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg sm:rounded-xl font-medium flex items-center justify-center gap-2 disabled:opacity-50"
                   >
                     {loading ? (
                       <>
-                        <RefreshCw className="animate-spin" size={16} />
-                        Updating...
+                        <RefreshCw className="animate-spin w-3 h-3 sm:w-4 sm:h-4" size={16} />
+                        <span className="text-xs sm:text-sm">Updating...</span>
                       </>
                     ) : (
                       'Update Password'

@@ -12,7 +12,7 @@ export default function Hero() {
       {/* Text Content */}
       <div className="flex-1 max-w-xl">
         <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
-          Let’s Grow <br />
+          Let's Grow <br />
           Your Dream <br />
           Garden
         </h1>

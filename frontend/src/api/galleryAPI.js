@@ -1,5 +1,5 @@
-const API_ROOT = import.meta.env.VITE_API_BASE_URL || import.meta.env.REN_URL;
-const API_BASE = `${API_ROOT}/gallery`;
+const API_ROOT = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api"
+const API_BASE = `${API_ROOT}/gallery`
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem("token");

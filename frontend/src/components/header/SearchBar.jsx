@@ -21,18 +21,18 @@ export default function SearchBar({ onSearch }) {
   };
 
   return (
-    <div ref={searchRef} className="relative w-full sm:w-auto max-w-xs md:max-w-sm">
+    <div ref={searchRef} className="relative w-full sm:w-auto max-w-sm">
       <form
         onSubmit={handleSubmit}
-        className={`flex items-center border-2 rounded-full px-3 sm:px-4 py-2 bg-white shadow-sm transition-all ${
+        className={`flex items-center border-2 rounded-full px-3 py-1.5 bg-white shadow-sm transition-all ${
           isFocused ? "border-gray-500 shadow-md" : "border-gray-300"
         }`}
       >
-        <i className="fas fa-search text-gray-400 mr-2 text-sm sm:text-base"></i>
+        <i className="fas fa-search text-gray-400 mr-2 text-sm"></i>
         <input
           type="text"
           placeholder="Search..."
-          className="outline-none flex-1 text-gray-700 text-sm sm:text-base placeholder-gray-400"
+          className="outline-none flex-1 text-gray-700 text-sm placeholder-gray-400"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setIsFocused(true)}

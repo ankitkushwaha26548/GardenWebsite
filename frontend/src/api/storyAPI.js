@@ -1,5 +1,5 @@
-const API_ROOT = import.meta.env.VITE_API_BASE_URL || import.meta.env.REN_URL;
-const API_BASE = `${API_ROOT}/stories`;
+const API_ROOT = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api"
+const API_BASE = `${API_ROOT}/stories`
 
 export async function getStories(page = 1, limit = 10, search = "") {
   try {

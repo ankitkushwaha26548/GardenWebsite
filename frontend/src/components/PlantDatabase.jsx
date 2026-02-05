@@ -145,25 +145,25 @@ export default function PlantDatabase() {
   };
 
   return (
-<div className="min-h-screen bg-gradient-to-br from-green-50 via-lime-50 to-emerald-50 p-6
+<div className="min-h-screen bg-gradient-to-br from-green-50 via-lime-50 to-emerald-50 p-4 sm:p-6
                 animate-fadeIn">
       <div className="max-w-7xl mx-auto">
         {/* Page Title */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-center text-[#37604b] mb-2">
+        <div className="text-center mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-center text-[#37604b] mb-2">
   🌿 Plant Database
 </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-base sm:text-lg text-gray-600">
             Explore plants or manage your collection
           </p>
 
 
 
           {/* TABS */}
-          <div className="flex justify-center gap-4 mt-6">
+          <div className="flex justify-center gap-2 sm:gap-4 mt-4 sm:mt-6 flex-col xs:flex-row">
             <button
               onClick={() => setActiveTab("myplants")}
-              className={`relative px-6 py-3 rounded-xl transition-all duration-300
+              className={`relative px-4 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl transition-all duration-300 text-sm sm:text-base
   ${activeTab === "myplants"
     ? "bg-green-100 border text-black shadow-lg"
     : "bg-white border hover:bg-green-50"}`}
@@ -173,7 +173,7 @@ export default function PlantDatabase() {
 
             <button
               onClick={() => setActiveTab("search")}
-              className={`relative px-6 py-3 rounded-xl transition-all duration-300
+              className={`relative px-4 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl transition-all duration-300 text-sm sm:text-base
   ${activeTab === "myplants"
     ? "bg-white border hover:bg-green-50"
     : "bg-green-100 border text-black shadow-lg"}
@@ -186,33 +186,33 @@ export default function PlantDatabase() {
 
         {/* SEARCH TAB */}
         {activeTab === "search" && (
-          <div className="max-w-2xl mx-auto mb-8">
-            <form onSubmit={handleSearch} className="flex gap-4">
+          <div className="max-w-2xl mx-auto mb-6 sm:mb-8">
+            <form onSubmit={handleSearch} className="flex gap-2 sm:gap-4 flex-col xs:flex-row">
               <input
                 type="text"
                 placeholder="Search for plants..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="flex-1 px-4 py-3 border rounded-xl"
+                className="flex-1 px-3 sm:px-4 py-2 sm:py-3 border rounded-lg sm:rounded-xl text-sm"
               />
 
               <button
                 type="submit"
-                className="bg-green-600 text-white px-6 rounded-xl"
+                className="bg-green-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl text-sm sm:text-base hover:bg-green-700 transition-colors whitespace-nowrap"
               >
                 Search
               </button>
             </form>
 
             {error && (
-              <p className="mt-3 text-red-600 text-center">{error}</p>
+              <p className="mt-3 text-red-600 text-center text-sm">{error}</p>
             )}
           </div>
         )}
 
         {/* SEARCH RESULTS */}
         {!loading && activeTab === "search" && plants.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-10">
             {plants.map((p) => (
               <PlantCard key={p._id} plant={p} onClick={openPlantDetails} />
             ))}
@@ -221,7 +221,7 @@ export default function PlantDatabase() {
 
         {/* MY PLANTS TAB */}
         {activeTab === "myplants" && !loadingUserPlants && userPlants.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-10">
             {userPlants.map((p) => (
               <PlantCard key={p._id} plant={p} onClick={openPlantDetails} />
             ))}
@@ -231,28 +231,28 @@ export default function PlantDatabase() {
         {/* MODAL */}
         {showModal && selectedPlant && (
 <div className="fixed inset-0 bg-black/40 backdrop-blur-sm 
-                flex items-start justify-center 
-                p-4 pt-5 z-50
+                flex items-center justify-center 
+                p-4 z-50
                 animate-fadeIn">
 
-<div className="bg-white rounded-2xl w-full max-w-3xl p-6 
+<div className="bg-white rounded-lg sm:rounded-2xl w-full max-w-3xl p-4 sm:p-6 
                 max-h-[90vh] overflow-y-auto 
                 shadow-2xl transform transition-all duration-300 
                 animate-scaleIn">
 
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h2 className="text-2xl font-bold">{selectedPlant.type === "My Plant" ? selectedPlant.name : selectedPlant.common_name}</h2>
+              <div className="flex justify-between items-start mb-4 gap-4">
+                <div className="min-w-0">
+                  <h2 className="text-xl sm:text-2xl font-bold truncate">{selectedPlant.type === "My Plant" ? selectedPlant.name : selectedPlant.common_name}</h2>
                   {selectedPlant.type === "My Plant" ? (
-                    <p className="text-gray-600">Species: {selectedPlant.common_name}</p>
+                    <p className="text-gray-600 text-sm line-clamp-1">Species: {selectedPlant.common_name}</p>
                   ) : (
-                    <p className="text-gray-600 italic">
+                    <p className="text-gray-600 italic text-sm line-clamp-1">
                       {selectedPlant.botanical_name}
                     </p>
                   )}
                 </div>
 
-                <button onClick={closeModal} className="text-2xl">
+                <button onClick={closeModal} className="text-lg sm:text-2xl flex-shrink-0 hover:opacity-70 transition-opacity">
                   ✕
                 </button>
               </div>
