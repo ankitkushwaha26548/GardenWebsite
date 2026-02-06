@@ -53,7 +53,7 @@ export default function SearchBar({ onSearch }) {
           className="ml-2 text-emerald-600 hover:text-emerald-700 transition-colors focus:outline-none"
           aria-label="Search"
         >
-          <i className="fas fa-arrow-right text-sm"></i>
+        <i className="fas fa-arrow-right text-sm"></i>
         </button>
       </form>
     </div>

@@ -1,31 +1,29 @@
 @import "tailwindcss";
 
-:root{
+:root {
   --pink-primary: #ff6b9d;
   --pink-light: #ffbdd4;
-  --green-primary:#4caf50;
-  --green-light:#90ee90;
-  --white:#ffffff;
-  --off-white:#f8fafc;
+  --green-primary: #4caf50;
+  --green-light: #90ee90;
+  --white: #ffffff;
+  --off-white: #f8fafc;
   
-  /* Responsive sizes */
+  /* Desktop Spacing */
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
   --spacing-lg: 1.5rem;
   --spacing-xl: 2rem;
-  
-  /* Touch safe minimum */
-  --min-touch-target: 44px;
 }
 
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  min-width: 1024px;
 }
 
 body {
-  font-family: 'Inter','Segoe UI', sans-serif;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
   background-color: #f8f8ed;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
@@ -34,18 +32,20 @@ body {
 }
 
 /* Responsive Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 p {
   margin: 0;
-}
-
-/* Touch-friendly interactive elements */
-button, a, input[type="checkbox"], input[type="radio"] {
-  min-height: 44px;
-  min-width: 44px;
+  line-height: 1.6;
 }
 
 /* Line clamps for text overflow */
@@ -200,44 +200,9 @@ button, a, input[type="checkbox"], input[type="radio"] {
     0 12px 24px -12px rgba(0, 0, 0, 0.05);
 }
 
-/* Responsive container */
-.responsive-container {
-  width: 100%;
-  max-width: 100%;
-  padding: 0 1rem;
-  margin: 0 auto;
-}
-
-@media (min-width: 640px) {
-  .responsive-container {
-    max-width: 640px;
-    padding: 0 1.5rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .responsive-container {
-    max-width: 768px;
-    padding: 0 2rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .responsive-container {
-    max-width: 1024px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .responsive-container {
-    max-width: 1280px;
-  }
-}
-
 /* Custom scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
@@ -246,21 +211,19 @@ button, a, input[type="checkbox"], input[type="radio"] {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(5, 150, 105, 0.3);
+  background: rgba(47, 133, 90, 0.3);
   border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(5, 150, 105, 0.5);
+  background: rgba(47, 133, 90, 0.5);
 }
 
 /* Focus states for accessibility */
 button:focus-visible,
 a:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 2px solid #4caf50;
+input:focus-visible {
+  outline: 2px solid #2f855a;
   outline-offset: 2px;
 }
 
@@ -271,25 +234,4 @@ select:focus-visible {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-}
-
-/* Responsive text utilities */
-.text-responsive-sm {
-  font-size: clamp(0.8rem, 2vw, 0.95rem);
-}
-
-.text-responsive-base {
-  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
-}
-
-.text-responsive-lg {
-  font-size: clamp(1.1rem, 3vw, 1.4rem);
-}
-
-.text-responsive-xl {
-  font-size: clamp(1.4rem, 4vw, 1.8rem);
-}
-
-.text-responsive-2xl {
-  font-size: clamp(1.8rem, 5vw, 2.25rem);
 }

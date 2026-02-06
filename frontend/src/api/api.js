@@ -1,14 +1,8 @@
-<<<<<<< HEAD
 const API_ROOT = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api"
 const PLANTS_ENDPOINT = `${API_ROOT}/plants`
 const SEARCH_ENDPOINT = `${API_ROOT}/search`
 const USER_PLANTS_ENDPOINT = `${API_ROOT}/user-plants`
-=======
-const API_ROOT = import.meta.env.VITE_API_BASE_URL || "https://leaflinebackend.onrender.com/api";
-const PLANTS_ENDPOINT = `${API_ROOT}/plants`;
-const SEARCH_ENDPOINT = `${API_ROOT}/search`;
-const USER_PLANTS_ENDPOINT = `${API_ROOT}/user-plants`;
->>>>>>> 36dc283d0568dbf151c34e6c9ec536a3ca7f4bf6
+
 
 const handleResponse = async (res) => {
   if (!res.ok) {
@@ -28,7 +22,7 @@ const getAuthHeaders = () => {
   };
 };
 
-// ==================== USER PLANTS ====================
+// user plants API
 
 // GET USER PLANTS
 export const getUserPlants = async (userId) => {

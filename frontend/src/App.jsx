@@ -10,6 +10,7 @@ import PlantDatabase from "./components/PlantDatabase";
 import Footer from "./components/footer/Footer";
 import Blog from "./pages/blogs/Blog";
 import Login from "./pages/Login";
+import SearchResults from "./pages/SearchResults";
 import { AuthContext } from "./auth/AuthProvider";
 
 // Protected Route Component
@@ -31,6 +32,7 @@ function App() {
           <Route path="/profile" element={<ProtectedRoute element={<Profile />} />}/>
           <Route path="/blog" element={<Blog />}/>
           <Route path="/plantdatabase" element={<PlantDatabase />}/>
+          <Route path="/search" element={<SearchResults />}/>
           <Route path="/login" element={<Login/>}/>
         </Routes>
         <Footer />
