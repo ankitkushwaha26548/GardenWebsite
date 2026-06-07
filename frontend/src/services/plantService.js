@@ -1,4 +1,8 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+
+// Normalize API base so we don't accidentally create duplicate `/api/api` paths.
+const _BASE = API_BASE_URL.replace(/\/$/, '');
+const API_PREFIX = _BASE.endsWith('/api') ? _BASE : `${_BASE}/api`;
 
 class PlantService {
   async searchPlants(query) {
@@ -8,7 +12,7 @@ class PlantService {
       }
 
       const response = await fetch(
-        `${API_BASE_URL}/api/plant-database/search?q=${encodeURIComponent(query)}`
+        `${API_PREFIX}/plant-database/search?q=${encodeURIComponent(query)}`
       );
       
       if (!response.ok) {
@@ -32,7 +36,7 @@ class PlantService {
   async getPlantDetails(plantId) {
     try {
       const response = await fetch(
-        `${API_BASE_URL}/api/plant-database/${encodeURIComponent(plantId)}`
+        `${API_PREFIX}/plant-database/${encodeURIComponent(plantId)}`
       );
       
       if (!response.ok) {
@@ -55,7 +59,7 @@ class PlantService {
 
   async checkApiStatus() {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/plant-database/status`);
+      const response = await fetch(`${API_PREFIX}/plant-database/status`);
       const data = await response.json();
       return data;
     } catch (error) {
